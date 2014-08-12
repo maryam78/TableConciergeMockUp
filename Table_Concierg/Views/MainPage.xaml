@@ -180,7 +180,7 @@
                 </Style>
             </Flyout.FlyoutPresenterStyle>
             <StackPanel>
-                <TimePicker x:Name="SearchTimePicker" Width="150" Header="Hour           Minute"/>
+                <TimePicker x:Name="SearchTimePicker" ClockIdentifier="24HourClock" MinuteIncrement="15" Width="170" Header="Hour               Minute"/>
             </StackPanel>
         </Flyout>
         
