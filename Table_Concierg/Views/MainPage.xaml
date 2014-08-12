@@ -164,8 +164,8 @@
                     <Setter Property="Width" Value="150"/>
                 </Style>
             </Flyout.FlyoutPresenterStyle>
-            <StackPanel Margin="0,60,0,0">
-                <DatePicker x:Name="SearchDatePicker" Orientation="Vertical" Width="100" />
+            <StackPanel Margin="0,100,0,0">
+                <DatePicker x:Name="SearchDatePicker" Orientation="Vertical" Width="120"/>
             </StackPanel>
         </Flyout>
         <Flyout x:Key="Search_FlyoutTime" Placement="Right">
@@ -180,7 +180,7 @@
                 </Style>
             </Flyout.FlyoutPresenterStyle>
             <StackPanel>
-                <TimePicker x:Name="SearchTimePicker" Width="130"/>
+                <TimePicker x:Name="SearchTimePicker" Width="150" Header="Hour           Minute"/>
             </StackPanel>
         </Flyout>
         

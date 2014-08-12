@@ -447,6 +447,11 @@
         <SolidColorBrush x:Key="SliderThumbPressedBackgroundThemeBrush" Color="Wheat" />
         <SolidColorBrush x:Key="SliderThumbPressedBorderThemeBrush" Color="Wheat" />
 
+        <x:Double x:Key="TimePickerSelectorThemeMinWidth">70</x:Double>
+        <Thickness x:Key="TimePickerFirstHostThemeMargin">0,0,5,0</Thickness>
+        <SolidColorBrush x:Key="TimePickerHeaderForegroundThemeBrush" Color="White" />
+        <Thickness x:Key="TimePickerHeaderThemeMargin">0,0,0,3</Thickness>
+
     </Application.Resources>
 
 </Application>
