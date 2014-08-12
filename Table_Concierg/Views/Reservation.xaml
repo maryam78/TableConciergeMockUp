@@ -40,7 +40,7 @@
         
         <HubSection>
             <DataTemplate>
-                <Grid Width="550" Height="500" Margin="20,0,0,0">
+                <Grid Width="550" Height="530" Margin="20,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -49,58 +49,111 @@
                     <TextBlock Text="Reservation" Margin="10" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}"/>
 
                     <Grid Grid.Row="1" Background="#683c0f">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <StackPanel Grid.Row="0">
-                            <TextBlock Text="OUTLET NAME"  Margin="10" Style="{StaticResource TitleTextBlockStyle}" FontSize="18"/>
-                            <TextBlock Text="Selected Outlet Summary" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    
-
-                        <!-- First Name, Last Name -->
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <TextBox Header="First Name" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,15,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
-                            <TextBox Header="Last Name" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
-                        </StackPanel>
-
-                        <!-- Phone Number, Email Address -->
-                        <StackPanel Grid.Row="3" Orientation="Horizontal">
-                            <TextBox Header="Phone Number" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,15,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
-                            <TextBox Header="Email Address" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
 
-                        <!-- Membership Number -->
-                        <StackPanel Grid.Row="4" Orientation="Horizontal">
-                            <TextBox Header="Membership Number" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
-                        </StackPanel>
+                            <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                                <TextBlock Text="InterContinental Dubai"  Margin="10" Style="{StaticResource TitleTextBlockStyle}" FontSize="18" Foreground="Aquamarine"/>
+                                <TextBlock Margin="20,0,0,0" FontSize="14" TextWrapping="Wrap">Located on the Creek and with stunning views in every direction, the InterContinental Dubai Festival City is a city landmark. The hotel features five outstanding restaurants all with breathtaking views of the Creek.</TextBlock>
+                            </StackPanel>
+                            
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="275" />
+                                    <ColumnDefinition Width="275" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                            <TextBlock Text="Restuarant: " Margin="10" Foreground="Aquamarine" FontSize="15"/>
+                                            <TextBlock Text=" Bistro Madeleine" Margin="0,10,0,0" FontSize="15"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                            <TextBlock Text="Location: " Margin="10" Foreground="Aquamarine" FontSize="15"/>
+                                            <TextBlock Text=" Dubai, DFC" Margin="0,10,0,0" FontSize="15"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                            <TextBlock Text="Number of Guests: " Margin="10" Foreground="Aquamarine" FontSize="15"/>
+                                            <TextBlock Text=" 7" Margin="0,10,0,0" FontSize="15"/>
+                                        </StackPanel>
+                            
+                                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                                            <TextBlock Text="Date of Reservation: " Margin="10" Foreground="Aquamarine" FontSize="15"/>
+                                            <TextBlock Text=" August 15, 2014" Margin="0,10,0,0" FontSize="15"/>
+                                        </StackPanel>
+                            
+                                        <StackPanel Grid.Row="4" Orientation="Horizontal">
+                                            <TextBlock Text="Time of Reservation: " Margin="10" Foreground="Aquamarine" FontSize="15"/>
+                                            <TextBlock Text=" 10:00 AM" Margin="0,10,0,0" FontSize="15"/>
+                                        </StackPanel>
+
+                                        <!-- Submit Button -->
+                                        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                            <Button Background="Transparent" 
+                                                BorderThickness="0" 
+                                                HorizontalAlignment="Left" 
+                                                VerticalAlignment="Bottom" 
+                                                Style="{StaticResource SearchButton}" 
+                                                BorderBrush="{x:Null}" 
+                                                Foreground="White" 
+                                                Click="Submit_Clicked">
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="Submit" VerticalAlignment="Center" FontSize="20" Margin="0,0,5,0"/>
+                                                    <Image Source="/Assets/Icons/ic_action_accept.png" Width="35" Height="35"/>
+                                                </StackPanel>
+                                            </Button>
+                                        </StackPanel>
+                                </Grid>
                         
-                        <!-- Submit Button -->
-                        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                            <Button Background="Transparent" 
-                                    BorderThickness="0" 
-                                    HorizontalAlignment="Right" 
-                                    HorizontalContentAlignment="Center" 
-                                    VerticalContentAlignment="Bottom" 
-                                    Style="{StaticResource SearchButton}" 
-                                    BorderBrush="{x:Null}" 
-                                    Foreground="White" 
-                                    Click="Submit_Clicked">
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
 
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Submit" VerticalAlignment="Center" FontSize="20" Margin="0,0,5,0"/>
-                                    <Image Source="/Assets/Icons/ic_action_accept.png" Width="35" Height="35"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
+                            
 
+
+                                    <!-- First Name, Last Name -->
+                                    <StackPanel Grid.Row="0" Orientation="Vertical">
+                                        <TextBox Header="First Name" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,0,15,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                                        <TextBox Header="Last Name" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                                    </StackPanel>
+
+                                    <!-- Phone Number, Email Address -->
+                                    <StackPanel Grid.Row="1" Orientation="Vertical">
+                                        <TextBox Header="Phone Number" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,0,15,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                                        <TextBox Header="Email Address" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                                    </StackPanel>
+
+
+                                    <!-- Membership Number -->
+                                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                        <TextBox Header="Membership Number" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                                    </StackPanel>
+
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </DataTemplate>
