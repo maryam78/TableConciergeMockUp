@@ -1,0 +1,109 @@
+﻿<Page
+    x:Class="Table_Concierg.Views.Reservation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Table_Concierg.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Hub>
+        <Hub.Background>
+            <SolidColorBrush Color="Wheat"/>
+        </Hub.Background>
+        <Hub.Header>
+            <Grid x:Name="MainGrid2" Margin="0,30,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Page Title and back button-->
+                <Grid x:Name="PageTitle" Grid.Row="0" Margin="30,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Margin="-1,-1,39,0"
+                            Style="{StaticResource NavigationBackButtonNormalStyle}"
+                            Click="Back_Click"
+                            VerticalAlignment="Top"
+                            AutomationProperties.Name="Back"
+                            AutomationProperties.AutomationId="BackButton"
+                            AutomationProperties.ItemType="Navigation Button"/>
+
+                    <TextBlock Text="Reservation" Grid.Column="1"  Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Top" ></TextBlock>
+                </Grid>
+            </Grid>
+        </Hub.Header>
+        
+        <HubSection>
+            <DataTemplate>
+                <Grid Width="550" Height="500" Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Reservation" Margin="10" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+                    <Grid Grid.Row="1" Background="#683c0f">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <TextBlock Text="OUTLET NAME"  Margin="10" Style="{StaticResource TitleTextBlockStyle}" FontSize="18"/>
+                            <TextBlock Text="Selected Outlet Summary" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    
+
+                        <!-- First Name, Last Name -->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <TextBox Header="First Name" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,15,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                            <TextBox Header="Last Name" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                        </StackPanel>
+
+                        <!-- Phone Number, Email Address -->
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <TextBox Header="Phone Number" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,15,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                            <TextBox Header="Email Address" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                        </StackPanel>
+
+
+                        <!-- Membership Number -->
+                        <StackPanel Grid.Row="4" Orientation="Horizontal">
+                            <TextBox Header="Membership Number" Foreground="#683c0f" Background="White" Width="250" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                        </StackPanel>
+                        
+                        <!-- Submit Button -->
+                        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <Button Background="Transparent" 
+                                    BorderThickness="0" 
+                                    HorizontalAlignment="Right" 
+                                    HorizontalContentAlignment="Center" 
+                                    VerticalContentAlignment="Bottom" 
+                                    Style="{StaticResource SearchButton}" 
+                                    BorderBrush="{x:Null}" 
+                                    Foreground="White" 
+                                    Click="Submit_Clicked">
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Submit" VerticalAlignment="Center" FontSize="20" Margin="0,0,5,0"/>
+                                    <Image Source="/Assets/Icons/ic_action_accept.png" Width="35" Height="35"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
+    </Hub>
+</Page>

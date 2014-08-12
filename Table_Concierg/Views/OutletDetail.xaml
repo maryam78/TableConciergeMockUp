@@ -1,0 +1,354 @@
+﻿<Page
+    x:Class="Table_Concierg.OutletDetail"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Table_Concierg"
+    xmlns:bm="using:Bing.Maps"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="photoCollectionViewSource"/>
+        <CollectionViewSource x:Name="itMenuItemCollectionViewSource"/>
+        <CollectionViewSource x:Name="inMenuItemCollectionViewSource"/>
+        <CollectionViewSource x:Name="leMenuItemCollectionViewSource"/>
+        
+        <DataTemplate x:Key="OutletDetail_GalleryDataTemplate">
+            <Border BorderBrush="White" BorderThickness="4">
+                <Grid Width="150" Height="150" HorizontalAlignment="Left">
+                    <Grid.Background>
+                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Image}"/>
+                    </Grid.Background>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="OutletDetail_ItHeaderTemplate">
+            <TextBlock Text="Italian Cuisine" Style="{StaticResource SubheaderTextBlockStyle}" Foreground="#683c0f" FontSize="20" Margin="30,10,10,10"></TextBlock>
+        </DataTemplate>
+
+        <DataTemplate x:Key="OutletDetail_InHeaderTemplate">
+            <TextBlock Text="Indian Cuisine" Style="{StaticResource SubheaderTextBlockStyle}" Foreground="#683c0f" FontSize="20" Margin="30,10,10,10"></TextBlock>
+        </DataTemplate>
+
+        <DataTemplate x:Key="OutletDetail_LeHeaderTemplate">
+            <TextBlock Text="Lebanese Cuisine" Style="{StaticResource SubheaderTextBlockStyle}" Foreground="#683c0f" FontSize="20" Margin="30,10,10,10"></TextBlock>
+        </DataTemplate>
+
+        <Style x:Key="OutletDetail_PhotoTileStyle" TargetType="GridViewItem">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Height" Value="150"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0,0,2,-4"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="TabNavigation" Value="Local"/>
+        </Style>
+
+        <ItemsPanelTemplate x:Key="OutletDetail_GridPanelTemplate">
+            <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="5"/>
+        </ItemsPanelTemplate>
+
+        <ItemsPanelTemplate x:Key="OutletDetail_MenuGridPanelTemplate">
+            <ItemsWrapGrid Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+    </Page.Resources>
+
+    <Hub x:Name="DetailHub">
+        <Hub.Background>
+            <SolidColorBrush Color="Wheat"/>
+        </Hub.Background>
+        
+        <Hub.Header>
+            <StackPanel Orientation="Horizontal" Margin="0,-35,0,0">
+                <TextBlock Text="Book Now: " VerticalAlignment="Center" Margin="0,0,10,0" FontSize="30"/>
+                <Button Click="Slot1_Click" BorderThickness="0" Margin="0,0,2,0" Padding="0">
+                    <StackPanel Background="Aquamarine" Width="70" Height="40" Margin="0">
+                        <TextBlock Text="9:00 AM" Margin="0,10,0,0" Foreground="White" FontSize="15" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="Slot2_Click" BorderThickness="0" Margin="0,0,2,0" Padding="0">
+                    <StackPanel Background="Aquamarine" Width="70" Height="40" >
+                        <TextBlock Text="9:30 AM" Margin="0,10,0,0" Foreground="White" FontSize="15" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="Slot3_Click" BorderThickness="0" Margin="0" Padding="0">
+                    <StackPanel Background="Aquamarine" Width="70" Height="40" Margin="0">
+                        <TextBlock Text="10:00 AM" Margin="0,10,0,0" Foreground="White" FontSize="15" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Hub.Header>
+        
+        <!-- Hero 1 -->
+        <HubSection Width="1100">
+
+            <HubSection.Background>
+                <ImageBrush ImageSource="/Assets/Outlets/Outlet_InterContinental.jpg" Stretch="UniformToFill"/>
+            </HubSection.Background>
+            
+            <DataTemplate>
+            <Grid x:Name="MainGrid2" Margin="0,-10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Page Title and back button-->
+                <Grid x:Name="PageTitle" Grid.Row="0" Margin="30,0,0,0" Height="600">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Margin="-1,-1,39,0"
+                            Style="{StaticResource NavigationBackButtonNormalStyle}"
+                            Click="Click_GoBack"
+                            VerticalAlignment="Top"
+                            AutomationProperties.Name="Back"
+                            AutomationProperties.AutomationId="BackButton"
+                            AutomationProperties.ItemType="Navigation Button"/>
+
+                    <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Background="#65000000">
+                        <TextBlock Text="InterContinental - Dubai" Style="{StaticResource HeaderTextBlockStyle}" Margin="20,20,20,10" ></TextBlock>
+                        <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                            <TextBlock Text="Star Rating: " Foreground="White" Style="{StaticResource SubheaderTextBlockStyle}" Margin="0,0,0,15"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_half_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            </DataTemplate>
+        </HubSection>
+
+        <!-- Overview 2 -->
+        <HubSection>
+            <DataTemplate>
+                <Grid Width="400" Height="500" Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Overview" Margin="10" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+                    <Grid Grid.Row="1" Background="#683c0f">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="250"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Bing Map -->
+                        <StackPanel Grid.Row="0" Width="380" Height="250" Margin="0,10,0,0">
+                            <bm:Map ZoomLevel="1" Credentials="Ao3FNzXa4iewd6yngjrmLooBedJkN-Y08byQtF-xiX4dY-kJbWAmg0_il65WhYx8" ShowNavigationBar="False">
+                                <bm:Map.Center>
+                                    <bm:Location Latitude="47.610039" Longitude="-122.342207" />
+                                </bm:Map.Center>
+                                <bm:Map.Children>
+                                    <bm:Pushpin>
+                                        <bm:MapLayer.Position>
+                                            <bm:Location Latitude="47.610039" Longitude="-122.342207" />
+                                        </bm:MapLayer.Position>
+                                    </bm:Pushpin>
+                                </bm:Map.Children>
+                            </bm:Map>
+                        </StackPanel>
+                        
+                        <!-- Hotel Information -->
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Left Column -->
+                            <Grid Grid.Column="0" Margin="20,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                
+                                <StackPanel Grid.Row="0" Orientation="Vertical" Margin="10,10,0,0">
+                                    <TextBlock Text="Address " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <TextBlock Text="UAE, Dubai Festival City" TextWrapping="Wrap"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10,10,0,0">
+                                    <TextBlock Text="Amenities " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <StackPanel x:Name="OverviewAmenities" Margin="0,0,0,0" Orientation="Horizontal">
+                                        <Image Source="/Assets/Icons/ic_action_person.png" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Icons/ic_action_favorite.png" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Icons/ic_action_location_found.png" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Icons/ic_action_phone.png" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Icons/ic_action_time.png" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10,10,0,0">
+                                    <TextBlock Text="Phone " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <TextBlock Text="+971 04 546 7833" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Grid>
+                            
+                            <!-- Right Column -->
+                            <Grid Grid.Column="1" Margin="0,0,20,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" Orientation="Vertical" Margin="10,10,0,0">
+                                    <TextBlock Text="Rating " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <StackPanel x:Name="OverviewRating" Orientation="Horizontal">
+                                        <Image Source="/Assets/Icons/ic_action_important.png" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Icons/ic_action_important.png" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Icons/ic_action_important.png" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Icons/ic_action_half_important.png" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Icons/ic_action_not_important.png" Width="20" Height="20"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10,10,0,0">
+                                    <TextBlock Text="Cuisine " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <StackPanel x:Name="OverviewCuisine" Orientation="Horizontal">
+                                        <Image Source="/Assets/Flags/India.png" Margin="0,0,5,0" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Flags/Italy.png" Margin="0,0,5,0" Width="20" Height="20"/>
+                                        <Image Source="/Assets/Flags/Lebanon.png" Margin="0,0,5,0" Width="20" Height="20"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                
+                                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10,10,0,0">
+                                    <TextBlock Text="Website " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <TextBlock Text="http://www.dubaifestivalcity.com" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
+        
+        <!-- Photo Gallery 3 -->
+        <HubSection>
+            <DataTemplate>
+                <Grid Width="800" Height="670" Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Photo Gallery" Margin="10" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+                    <Grid Grid.Row="1" Background="#f5efd0">
+                        <ScrollViewer Height="600" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                            <GridView x:Name="PhotoGalleryGridView" 
+                                          Width="auto"
+                                          Height="auto"
+                                          ItemTemplate="{StaticResource OutletDetail_GalleryDataTemplate}" 
+                                          ItemContainerStyle="{StaticResource OutletDetail_PhotoTileStyle}" 
+                                          ItemsPanel="{StaticResource OutletDetail_GridPanelTemplate}" 
+                                          ShowsScrollingPlaceholders="False" 
+                                          VerticalAlignment="Stretch" 
+                                          ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                                          SelectionMode="None"
+                                          IsItemClickEnabled="False" 
+                                          ItemsSource="{Binding Source={StaticResource photoCollectionViewSource}}" 
+                                          Margin="20,20,0,0">
+                            </GridView>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
+
+        <!-- Menu Items 4 -->
+        <HubSection IsHeaderInteractive="True">
+            <DataTemplate>
+                <Grid Width="800" Height="670" Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Menu Items" Margin="10" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+                    <Grid Grid.Row="1" Background="#f5efd0">
+                        <ScrollViewer Height="600" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        <StackPanel Orientation="Vertical">
+                            <ScrollViewer Width="800" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                                <GridView x:Name="ItMenuItemsGridView"    
+                                          HeaderTemplate="{StaticResource OutletDetail_ItHeaderTemplate}"
+                                          Width="auto"
+                                          Height="200" 
+                                          ItemTemplate="{StaticResource OutletDetail_GalleryDataTemplate}" 
+                                          ItemContainerStyle="{StaticResource OutletDetail_PhotoTileStyle}" 
+                                          ItemsPanel="{StaticResource OutletDetail_MenuGridPanelTemplate}" 
+                                          ShowsScrollingPlaceholders="False" 
+                                          VerticalAlignment="Stretch"
+                                          SelectionMode="None"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                                          IsItemClickEnabled="False" 
+                                          ItemClick="PhotoGalleryGridView_ItemClick"
+                                          ItemsSource="{Binding Source={StaticResource itMenuItemCollectionViewSource}}" 
+                                          Margin="20,0,0,0">
+                                </GridView>
+                            </ScrollViewer>
+
+                            <ScrollViewer Width="800" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                                <GridView x:Name="InMenuItemsGridView"    
+                                          HeaderTemplate="{StaticResource OutletDetail_InHeaderTemplate}"
+                                          Width="auto"
+                                          Height="200" 
+                                          ItemTemplate="{StaticResource OutletDetail_GalleryDataTemplate}" 
+                                          ItemContainerStyle="{StaticResource OutletDetail_PhotoTileStyle}" 
+                                          ItemsPanel="{StaticResource OutletDetail_MenuGridPanelTemplate}" 
+                                          ShowsScrollingPlaceholders="False" 
+                                          SelectionMode="None"
+                                          VerticalAlignment="Stretch" 
+                                          ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                                          IsItemClickEnabled="False" 
+                                          ItemClick="PhotoGalleryGridView_ItemClick"
+                                          ItemsSource="{Binding Source={StaticResource inMenuItemCollectionViewSource}}" 
+                                          Margin="20,0,0,0">
+                                </GridView>
+                            </ScrollViewer>
+
+
+                            <ScrollViewer Width="800" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                                <GridView x:Name="LeMenuItemsGridView"    
+                                            HeaderTemplate="{StaticResource OutletDetail_LeHeaderTemplate}"
+                                            Width="auto"
+                                            Height="200" 
+                                            ItemTemplate="{StaticResource OutletDetail_GalleryDataTemplate}" 
+                                            ItemContainerStyle="{StaticResource OutletDetail_PhotoTileStyle}" 
+                                            ItemsPanel="{StaticResource OutletDetail_MenuGridPanelTemplate}" 
+                                            ShowsScrollingPlaceholders="False" 
+                                            VerticalAlignment="Stretch"
+                                            SelectionMode="None"
+                                            ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                                            IsItemClickEnabled="True" 
+                                            ItemClick="leMenuItemsGridView_ItemClick"
+                                            ItemsSource="{Binding Source={StaticResource leMenuItemCollectionViewSource}}" 
+                                            Margin="20,0,0,0">
+                                </GridView>
+                            </ScrollViewer>
+                        </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
+    </Hub>
+</Page>

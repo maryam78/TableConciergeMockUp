@@ -1,0 +1,779 @@
+﻿<Page
+    x:Class="Table_Concierg.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Table_Concierg"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dts="using:Table_Concierg.DataTemplateSelectors"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <CollectionViewSource x:Name="itemCollectionViewSource" />
+        <CollectionViewSource x:Name="itemHeadersCollectionViewSource" />
+        <CollectionViewSource x:Name="itemCategoriesCollectionViewSource" />
+        <CollectionViewSource x:Name="itemAttireCollectionViewSource" />
+        <CollectionViewSource x:Name="itemAmenitiesCollectionViewSource" />
+        <CollectionViewSource x:Name="itemRatingsCollectionViewSource" />
+
+        <!-- Star Rating -->
+        <DataTemplate x:Key="Rating_1">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Rating_1_5">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_half_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Rating_2">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Rating_2_5">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_half_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Rating_3">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Rating_3_5">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_half_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Rating_4">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Rating_4_5">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_half_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="Rating_5">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+            </StackPanel>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="SortListViewItemTemplate">
+            <StackPanel Background="#f5efd0" Width="120" Height="40">
+                <TextBlock Text="{Binding Header}" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="FilterCategoryListViewItemTemplate">
+            <StackPanel Background="#f5efd0" Width="120" Height="40">
+                <TextBlock Text="{Binding Category}" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="FilterAttireListViewItemTemplate">
+            <StackPanel Background="#f5efd0" Width="120" Height="40">
+                <TextBlock Text="{Binding Attire}" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="FilterAmenityListViewItemTemplate">
+            <StackPanel Background="#f5efd0" Width="120" Height="40">
+                <TextBlock Text="{Binding Amenity}" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="FilterRatingListViewItemTemplate">
+            <StackPanel Background="#f5efd0" Width="120" Height="40">
+                <TextBlock Text="{Binding Rating}" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+        
+        
+
+        <ItemsPanelTemplate x:Key="OutletsListView_ItemsPanel">
+            <StackPanel Margin="0" Width="auto" VerticalAlignment="Center"/>
+        </ItemsPanelTemplate>
+        <ItemsPanelTemplate x:Key="SortListView_ItemsPanel">
+            <WrapGrid Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+        <ItemsPanelTemplate x:Key="FilterListView_ItemsPanel">
+            <WrapGrid Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+        
+        <Flyout x:Key="Search_FlyoutCovers" Placement="Right">
+            <!-- The DataContext of the flyout is the same as the item's data context that the flyout is attached to. -->
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Height" Value="20"/>
+                    <Setter Property="Width" Value="160"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel>
+                <Slider x:Name="CoversSlider" Minimum="1" Maximum="10" Margin="0" VerticalAlignment="Bottom" IsEnabled="{Binding InputAllowed}" Width="150" Value="{Binding Path=Covers, Mode=TwoWay}"/>
+            </StackPanel>
+        </Flyout>
+        <Flyout x:Key="Search_FlyoutDate" Placement="Right">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="150"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel Margin="0,60,0,0">
+                <DatePicker x:Name="SearchDatePicker" Orientation="Vertical" Width="100" />
+            </StackPanel>
+        </Flyout>
+        <Flyout x:Key="Search_FlyoutTime" Placement="Right">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="150"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel>
+                <TimePicker x:Name="SearchTimePicker" Width="130"/>
+            </StackPanel>
+        </Flyout>
+        
+        <Flyout x:Key="FilterPrice_Flyout" Placement="Bottom">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="#683c0f"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel Orientation="Vertical">
+                <TextBlock />
+                <!-- Maximum Needs to be bound to highest price -->
+                <Slider x:Name="PriceSlider" HorizontalAlignment="Stretch" Width="900" Maximum="300"/>
+            </StackPanel>
+        </Flyout>
+        <Flyout x:Key="FilterRating_Flyout" Placement="Bottom">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="#683c0f"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel Orientation="Vertical">
+                <ListView SelectionMode="Multiple"
+                          ItemsSource="{Binding Source={StaticResource itemRatingsCollectionViewSource}}"
+                          ItemsPanel="{StaticResource FilterListView_ItemsPanel}"
+                          ItemTemplate="{StaticResource FilterRatingListViewItemTemplate}">
+                </ListView>
+            </StackPanel>
+        </Flyout>
+        <Flyout x:Key="FilterCategory_Flyout" Placement="Bottom">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="#683c0f"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel Orientation="Vertical">
+                <TextBlock />
+                <StackPanel Orientation="Horizontal">
+                    <ListView SelectionMode="Multiple"
+                          ItemsSource="{Binding Source={StaticResource itemCategoriesCollectionViewSource}}"
+                          ItemsPanel="{StaticResource FilterListView_ItemsPanel}"
+                          ItemTemplate="{StaticResource FilterCategoryListViewItemTemplate}">
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+        </Flyout>
+        <Flyout x:Key="FilterAttire_Flyout" Placement="Bottom">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="#683c0f"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <ListView SelectionMode="Multiple"
+                          ItemsSource="{Binding Source={StaticResource itemAttireCollectionViewSource}}"
+                          ItemsPanel="{StaticResource FilterListView_ItemsPanel}"
+                          ItemTemplate="{StaticResource FilterAttireListViewItemTemplate}">
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+        </Flyout>
+        <Flyout x:Key="Sort_Flyout" Placement="Bottom">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="#683c0f"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel Orientation="Horizontal">
+                <ListView x:Name="SortListView"
+                          SelectionMode="Multiple"
+                          ItemsSource="{Binding Source={StaticResource itemHeadersCollectionViewSource}}"
+                          ItemsPanel="{StaticResource SortListView_ItemsPanel}"
+                          ItemTemplate="{StaticResource SortListViewItemTemplate}">
+                </ListView>
+            </StackPanel>
+        </Flyout>
+        
+        <Style x:Key="ListView_ItemContainerStyle" TargetType="ListViewItem">
+            <Setter Property="Height" Value="120"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+        </Style>
+
+
+        <DataTemplate x:Key="WithOutAvailabilityTemplate">
+            <Grid Width="1010" Height="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="White" Height="80">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="290"/>
+                        <ColumnDefinition  Width="150"/>
+                        <ColumnDefinition  Width="120"/>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition  Width="250"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Margin="0,0,0,0" Orientation="Horizontal">
+                        <Image Source="{Binding Image}" Width="60" Height="60" Margin="5"/>
+                        <StackPanel Orientation="Vertical" Margin="5">
+                            <TextBlock Text="{Binding Name}" Foreground="#683c0f" FontWeight="Medium" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/Icons/ic_action_directions_Aquamarine.png" Width="25" Height="25"/>
+                                <TextBlock Text="{Binding Location}" Foreground="#683c0f" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/Icons/ic_action_phone_Aquamarine.png" Width="25" Height="25"/>
+                                <TextBlock Text="{Binding Phone}" Foreground="#683c0f" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="0,0,0,0">
+                        <TextBlock Text="{Binding Category}" Foreground="#683c0f" FontWeight="Medium" VerticalAlignment="Center" Margin="10,20,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Margin="0,0,0,0">
+                        <TextBlock Text="{Binding Attire}" Foreground="#683c0f" VerticalAlignment="Center" Margin="10,20,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3" Margin="0,0,0,0" Orientation="Horizontal">
+                        <Image Source="/Assets/Icons/ic_action_person_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,20,0,0" Width="30" Height="30"/>
+                        <Image Source="/Assets/Icons/ic_action_favorite_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" Width="30" Height="30"/>
+                        <Image Source="/Assets/Icons/ic_action_location_found_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" Width="30" Height="30"/>
+                        <Image Source="/Assets/Icons/ic_action_phone_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" Width="30" Height="30"/>
+                        <Image Source="/Assets/Icons/ic_action_time_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" Width="30" Height="30"/>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Column="4" Margin="0,0,0,0">
+                    <TextBlock Text="{Binding Cuisine}" Foreground="#683c0f" VerticalAlignment="Center" Margin="10,20,0,0"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1" Grid.ColumnSpan="4" Width="1000" Background="#683c0f">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0"  Width="Auto" Orientation="Horizontal" Margin="0,0,30,0">
+                        <TextBlock Text="Average Cost: " Foreground="White" Margin="10,5,0,0"/>
+                        <TextBlock Text="{Binding Price}" Foreground="Aquamarine" Margin="10,5,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Width="Auto" Orientation="Horizontal" Margin="0,0,30,0">
+                        <TextBlock Text="Distance: " Foreground="White" Margin="10,5,0,0"/>
+                        <TextBlock Text="1.6 Km" Foreground="Aquamarine" Margin="10,5,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Width="Auto" Margin="0,0,30,0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Star Rating: " Foreground="White" />
+                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_half_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="WithAvailabilityTemplate">
+            <Grid Width="1010" Height="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="White" Height="80">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="290"/>
+                        <ColumnDefinition  Width="150"/>
+                        <ColumnDefinition  Width="120"/>
+                        <ColumnDefinition  Width="200"/>
+                        <ColumnDefinition  Width="250"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Hotel Info -->
+                    <StackPanel Grid.Column="0" Margin="0" Orientation="Horizontal">
+                        <Image Source="{Binding Image}" Width="60" Height="60" Margin="5"/>
+                        <StackPanel Orientation="Vertical" Margin="5">
+                            <TextBlock Text="{Binding Name}" Foreground="#683c0f" FontWeight="Medium" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/Icons/ic_action_directions_Aquamarine.png" Width="25" Height="25"/>
+                                <TextBlock Text="{Binding Location}" Foreground="#683c0f" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/Icons/ic_action_phone_Aquamarine.png" Width="25" Height="25"/>
+                                <TextBlock Text="{Binding Phone}" Foreground="#683c0f" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <!-- Category -->
+                    <StackPanel Grid.Column="1" Margin="0">
+                        <TextBlock Text="{Binding Category}" Foreground="#683c0f" FontWeight="Medium" VerticalAlignment="Center" Margin="10,20,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+                    </StackPanel>
+
+                    <!-- Attire -->
+                    <StackPanel Grid.Column="2" Margin="0">
+                        <TextBlock Text="{Binding Attire}" Foreground="#683c0f" VerticalAlignment="Center" Margin="10,20,0,0"/>
+                    </StackPanel>
+                    
+                    <!-- Amenities -->
+                    <StackPanel Grid.Column="3" Margin="0" Orientation="Horizontal">
+                        <Image Source="/Assets/Icons/ic_action_person_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,20,0,0" Width="30" Height="30"/>
+                        <Image Source="/Assets/Icons/ic_action_favorite_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" Width="30" Height="30"/>
+                        <Image Source="/Assets/Icons/ic_action_location_found_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" Width="30" Height="30"/>
+                        <Image Source="/Assets/Icons/ic_action_phone_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" Width="30" Height="30"/>
+                        <Image Source="/Assets/Icons/ic_action_time_Aquamarine.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" Width="30" Height="30"/>
+                    </StackPanel>
+                    
+                    <!-- Availability -->
+                    <StackPanel Grid.Column="4" Margin="0,0,0,0" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="Slot1_Click" BorderThickness="0" Margin="0,0,2,0" Padding="0">
+                                <StackPanel Background="#f5efd0" Width="70" Height="40" Margin="0">
+                                    <TextBlock Text="9:00 AM" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="15" TextAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Click="Slot2_Click" BorderThickness="0" Margin="0,0,2,0" Padding="0">
+                                <StackPanel Background="#f5efd0" Width="70" Height="40" >
+                                    <TextBlock Text="9:30 AM" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="15" TextAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Click="Slot3_Click" BorderThickness="0" Margin="0" Padding="0">
+                                <StackPanel Background="#f5efd0" Width="70" Height="40" Margin="0">
+                                    <TextBlock Text="10:00 AM" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="15" TextAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                
+                <!-- Bottom Strip -->
+                <Grid Grid.Row="1" Grid.ColumnSpan="4" Width="1000" Background="#683c0f">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0"  Width="Auto" Orientation="Horizontal" Margin="0,0,30,0">
+                        <TextBlock Text="Average Cost: " Foreground="White" Margin="10,5,0,0"/>
+                        <TextBlock Text="{Binding Price}" Foreground="Aquamarine" Margin="10,5,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Width="Auto" Orientation="Horizontal" Margin="0,0,30,0">
+                        <TextBlock Text="Distance: " Foreground="White" Margin="10,5,0,0"/>
+                        <TextBlock Text="1.6 Km" Foreground="Aquamarine" Margin="10,5,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Width="Auto" Margin="0,0,30,0">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Star Rating: " Foreground="White" />
+                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_half_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        
+        <dts:AvailabilityTemplateSelector x:Key="Outletsdts"
+                                          WithAvailabilityTemplate="{StaticResource WithAvailabilityTemplate}"
+                                          WithOutAvailabilityTemplate="{StaticResource WithOutAvailabilityTemplate}" />
+    </Page.Resources>
+    
+    <Hub x:Name="MainPageHub">
+        <Hub.Background>
+            <SolidColorBrush Color="Wheat"/>
+        </Hub.Background>
+
+        <Hub.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Assets/TableConcierg.png" Height="120" Width="120" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="Online Booking" 
+                           Style="{StaticResource HeaderTextBlockStyle}" Foreground="#683c0f" VerticalAlignment="Center"/>
+            </Grid>
+        </Hub.Header>
+        
+        <!-- Search Box -->
+        <HubSection>
+            <DataTemplate>
+                <Grid Width="400" Height="500" Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Search" Margin="10" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    
+                    <Grid Grid.Row="1" Background="#683c0f">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="OUTLETS" Margin="10" Style="{StaticResource TitleTextBlockStyle}" FontSize="18"/>
+                        
+                        <!-- Location -->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox Header="Location" Foreground="#683c0f" Background="White" Width="340" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                                <StackPanel Grid.Column="1" Background="White" Height="42" VerticalAlignment="Bottom">
+                                    <Button Grid.Column="1" Margin="0.1" VerticalAlignment="Center" Padding="-3,0,0,0" Width="42" Height="42" HorizontalAlignment="Center" Style="{StaticResource ImageButton}" >
+                                        <Button.Flyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem Text="Get Current Location"/>
+                                            </MenuFlyout>
+                                        </Button.Flyout>
+                                        <Image Source="/Assets/Icons/ic_action_place_Aquamarine.png" Margin="0,0,0,0" Height="38" Width="38"/>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <!-- Date -->
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox Grid.Column="0" Header="Date" PlaceholderText="M/d/yyyy" Text="{Binding Path=Value ,ElementName=SearchDatePicker}" Foreground="#683c0f" Width="143" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}" />
+                                <StackPanel Grid.Column="1" Background="White" Height="42" VerticalAlignment="Bottom">
+                                    <Button Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,0,0" Padding="-3,0,0,0" VerticalAlignment="Bottom" Width="42" Height="42" BorderThickness="0" Style="{StaticResource ImageButton}" Flyout="{StaticResource Search_FlyoutDate}" >
+                                        <Image Source="/Assets/Icons/ic_action_go_to_today_Aquamarine.png" Margin="0,-3,0,0" Height="38" Width="38"/>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- Time -->
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox  Grid.Column="0" Header="Time" Width="143" Height="70" Margin="10,10,0,0" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}" KeyDown="Hour_KeyDown"/>
+                                <StackPanel Grid.Column="1" Background="White" Height="42" Width="42" VerticalAlignment="Bottom">
+                                    <Button Grid.Column="1" HorizontalAlignment="Left" Margin="0" Padding="-3,0,0,0" VerticalAlignment="Center" Height="42" Width="42" BorderThickness="0" Style="{StaticResource ImageButton}" Flyout="{StaticResource Search_FlyoutTime}">
+                                        <Image Source="/Assets/Icons/ic_action_time_Aquamarine.png" Margin="0,-3,0,0" Height="42" Width="42"/>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- Date and Time -->
+                        <!--<StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox  Grid.Column="0" Header="Hour" Width="143" Height="70" Margin="10,10,0,0" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}" KeyDown="Hour_KeyDown"/>
+                                <StackPanel Grid.Column="1" Background="White" Height="42" Width="42" VerticalAlignment="Bottom">
+                                    <Button Grid.Column="1" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Height="42" Width="42" BorderThickness="0" Style="{StaticResource ImageButton}" >
+                                        <Button.Flyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem Text="Option 1"/>
+                                                <MenuFlyoutSeparator/>
+                                                <ToggleMenuFlyoutItem Text="Option 2"/>
+                                                <ToggleMenuFlyoutItem Text="Option 3"/>
+                                            </MenuFlyout>
+                                        </Button.Flyout>
+                                        <Image Source="/Assets/Icons/ic_action_time_Aquamarine.png" Margin="-10,-5,0,0" Height="38" Width="38"/>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox Grid.Column="0" Header="Minute" Width="143" Height="70" Margin="12,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}" KeyDown="Minute_KeyDown"/>
+                                <StackPanel Grid.Column="1" Background="White" Height="42" Width="42" VerticalAlignment="Bottom">
+                                    <Button Grid.Column="1" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Height="42" BorderThickness="0" Style="{StaticResource ImageButton}" >
+                                        <Image Source="/Assets/Icons/ic_action_time_Aquamarine.png" Margin="-10,-5,0,0" Height="38" Width="38"/>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>-->
+
+                        <!-- Covers -->
+                        <StackPanel Grid.Row="4" Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox  Grid.Column="0" Header="Covers" Foreground="#683c0f" Width="143" Height="70" IsReadOnly="True" Text="{Binding Value,ElementName=CoversSlider}" Margin="10,10,0,0" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                                <StackPanel Grid.Column="1" Background="White" Height="42" Width="42" VerticalAlignment="Bottom">
+                                    <Button Grid.Column="1" HorizontalAlignment="Left" Margin="0" Padding="-3,0,0,0" VerticalAlignment="Center" Height="42"  Width="42" BorderThickness="0" Style="{StaticResource ImageButton}" Flyout="{StaticResource Search_FlyoutCovers}">
+                                        <Image Source="/Assets/Icons/ic_action_person_Aquamarine.png" Margin="0,-3,0,0" Width="42" Height="42"/>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                        <!-- Search Outlets -->
+                        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <Button Grid.Column="1" Background="Transparent" 
+                                    BorderThickness="0" 
+                                    HorizontalAlignment="Right" 
+                                    HorizontalContentAlignment="Center" 
+                                    VerticalContentAlignment="Bottom" 
+                                    Style="{StaticResource SearchButton}" 
+                                    BorderBrush="{x:Null}" 
+                                    Foreground="White" 
+                                    Click="Click_SearchOutlets">
+                                
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Search Outlets" VerticalAlignment="Center" FontSize="20" Margin="0,0,5,0"/>
+                                    <Image Source="/Assets/Icons/ic_action_search.png" Width="35" Height="35"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
+        
+        <HubSection x:Name="SearchOutput" Visibility="Visible">
+            <DataTemplate>
+                <Grid x:Name="MainGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid x:Name="Filters" Grid.Row="0">
+                        <StackPanel Orientation="Horizontal">
+                            <Button BorderThickness="0" Flyout="{StaticResource FilterPrice_Flyout}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Price: " Foreground="#683c0f"/>
+                                    <TextBlock Text=" Show All" /> <!-- Needs to be bound to the item selected -->
+                                    <Image Source="/Assets/Icons/ic_action_expand_Aquamarine.png" Margin="5,0,0,0" Width="20" Height="20"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button BorderThickness="0" Flyout="{StaticResource FilterRating_Flyout}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Rating: " Foreground="#683c0f"/>
+                                    <TextBlock Text=" Show All" /> <!-- Needs to be bound to the item selected --> 
+                                    <Image Source="/Assets/Icons/ic_action_expand_Aquamarine.png" Margin="5,0,0,0" Width="20" Height="20"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button BorderThickness="0" Flyout="{StaticResource FilterCategory_Flyout}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Category: " Foreground="#683c0f"/>
+                                    <TextBlock Text=" Show All" /> <!-- Needs to be bound to the item selected -->
+                                    <Image Source="/Assets/Icons/ic_action_expand_Aquamarine.png" Margin="5,0,0,0" Width="20" Height="20"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button BorderThickness="0" Flyout="{StaticResource FilterAttire_Flyout}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Attire: " Foreground="#683c0f"/>
+                                    <TextBlock Text=" Show All" /> <!-- Needs to be bound to the item selected -->
+                                    <Image Source="/Assets/Icons/ic_action_expand_Aquamarine.png" Margin="5,0,0,0" Width="20" Height="20"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button BorderThickness="0" Flyout="{StaticResource Sort_Flyout}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Sort: " Foreground="#683c0f"/>
+                                    <TextBlock Text=" By Selected"/>
+                                    <!-- Needs to be bound to the item selected -->
+                                    <Image Source="/Assets/Icons/ic_action_expand_Aquamarine.png" Margin="5,0,0,0" Width="20" Height="20"/>
+                                </StackPanel>
+                            </Button>
+                            
+                            <ToggleButton x:Name="AvailibilityToggleButton"
+                                          Content="Show Availability" 
+                                          Checked="Availibility_Checked" 
+                                          Unchecked="Availibility_Unchecked"
+                                          HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Width="1000" Height="Auto" Margin="0,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- ListView Headers -->
+                        <Grid x:Name="ListViewHeaders" Height="40">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="290"/>
+                                <ColumnDefinition  Width="150"/>
+                                <ColumnDefinition  Width="120"/>
+                                <ColumnDefinition  Width="200"/>
+                                <ColumnDefinition Width="250"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Margin="0,0,5,0" Background="Aquamarine">
+                                <TextBlock Text="Name" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Margin="0,0,5,0" Background="Aquamarine">
+                                <TextBlock Text="Catergory" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2" Margin="0,0,5,0" Background="Aquamarine">
+                                <TextBlock Text="Attire" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="3" Margin="0,0,5,0" Background="Aquamarine">
+                                <TextBlock Text="Amenities" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="4" Margin="0,0,5,0" Background="Aquamarine">
+                                <TextBlock Text="Availability" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- List View Items-->
+                        <ScrollViewer Grid.Row="1" Height="700" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                            <ListView x:Name="OutletsListView"
+                                      Width="1010"
+                                      Margin="0"
+                                      Height="Auto"
+                                      ItemTemplateSelector="{StaticResource Outletsdts}"
+                                      ItemContainerStyle="{StaticResource ListView_ItemContainerStyle}" 
+                                      ItemsPanel="{StaticResource OutletsListView_ItemsPanel}"
+                                      ItemsSource="{Binding Source={StaticResource itemCollectionViewSource}}"
+                                      SelectionMode="None"
+                                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                      Grid.ColumnSpan="4"
+                                      IsItemClickEnabled="true"
+                                      ItemClick="ListView_Click">
+                            </ListView>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
+    </Hub>
+</Page>

@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="Table_Concierg.MenuItems"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Table_Concierg"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <CollectionViewSource x:Name="leMenuItemCollectionViewSource"/>
+
+        <ItemsPanelTemplate x:Key="MenuItems_ItemsPanelListView">
+            <ItemsWrapGrid Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+
+        <DataTemplate x:Key="MenuItems_ListView">
+            <Border BorderBrush="White" BorderThickness="3">
+                <Image Source="{Binding Image}" Width="100" Height="100"/>
+            </Border>
+        </DataTemplate>
+
+    </Page.Resources>
+
+    <Grid Background="#f5efd0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <FlipView x:Name="MenuItemFlipView" Grid.Row="0" Margin="20" BorderBrush="#683c0f" BorderThickness="4" 
+                  ItemsSource="{Binding Source={StaticResource leMenuItemCollectionViewSource}}"
+                  SelectedItem="{Binding ElementName=MenuItemListView, Mode=TwoWay}">
+            <FlipView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid>
+                            <Image Grid.Row="1" Width="Auto" Height="Auto" Source="{Binding Image}" Stretch="UniformToFill"/>
+                            <Border Grid.Row="1" Background="#A5000000" Height="120" VerticalAlignment="Bottom">
+                                <ScrollViewer Width="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                                    <ListView x:Name="MenuItemListView"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                          HorizontalAlignment="Center"
+                                          ItemTemplate="{StaticResource MenuItems_ListView}"
+                                          ItemsSource="{Binding Source={StaticResource leMenuItemCollectionViewSource}}"
+                                          ItemsPanel="{StaticResource MenuItems_ItemsPanelListView}"
+                                          SelectedItem="{Binding ElementName=MenuItemFlipView, Mode=TwoWay}">
+                                    </ListView>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
+                    
+                    
+                        <!-- Back Button and Title -->
+                        <Grid Margin="40">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0" Margin="-1,-1,39,0"
+                                Style="{StaticResource NavigationBackButtonNormalStyle}"
+                                Click="Click_GoBack"
+                                VerticalAlignment="Top"
+                                AutomationProperties.Name="Back"
+                                AutomationProperties.AutomationId="BackButton"
+                                AutomationProperties.ItemType="Navigation Button"/>
+
+                            <TextBlock Grid.Column="1" Text="Lebanese Cuisine" Foreground="White" Style="{StaticResource HeaderTextBlockStyle}"/>
+                        </Grid>
+
+                    </Grid>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+            
+        </FlipView>
+    </Grid>
+</Page>
