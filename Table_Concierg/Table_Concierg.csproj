@@ -177,6 +177,9 @@
     <Content Include="Assets\Icons\ic_action_time.png" />
     <Content Include="Assets\Icons\ic_action_time_Aquamarine.png" />
     <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\Logos\Splash Screen\SplashScreen_1116x540.png" />
+    <Content Include="Assets\Logos\Splash Screen\SplashScreen_620x300.png" />
+    <Content Include="Assets\Logos\Splash Screen\SplashScreen_868x420.png" />
     <Content Include="Assets\MenuItems\Indian\1.jpg" />
     <Content Include="Assets\MenuItems\Indian\2.jpg" />
     <Content Include="Assets\MenuItems\Indian\3.jpg" />
@@ -227,6 +230,8 @@
     <Content Include="Assets\PhotoGallery\9.jpg" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-140.png" />
+    <Content Include="Assets\SplashScreen.scale-180.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\TableConcierg.png" />
   </ItemGroup>
