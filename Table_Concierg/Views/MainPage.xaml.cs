@@ -190,6 +190,7 @@ namespace Table_Concierg
         private void Click_SearchOutlets(object sender, RoutedEventArgs e)
         {
             SearchOutput.Visibility = Visibility.Visible;
+            MainPageHub.ScrollToSection(MainPageHub.Sections[1]);
         }
 
         private void ListView_Click(object sender, ItemClickEventArgs e)

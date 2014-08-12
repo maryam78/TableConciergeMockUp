@@ -712,6 +712,7 @@
                             
                             <ToggleButton x:Name="AvailibilityToggleButton"
                                           Content="Show Availability" 
+                                          IsChecked="True"
                                           Checked="Availibility_Checked" 
                                           Unchecked="Availibility_Unchecked"
                                           HorizontalAlignment="Right"/>
@@ -761,6 +762,7 @@
                                       Margin="0"
                                       Height="Auto"
                                       ItemTemplateSelector="{StaticResource Outletsdts}"
+                                      ItemTemplate="{StaticResource WithAvailabilityTemplate}"
                                       ItemContainerStyle="{StaticResource ListView_ItemContainerStyle}" 
                                       ItemsPanel="{StaticResource OutletsListView_ItemsPanel}"
                                       ItemsSource="{Binding Source={StaticResource itemCollectionViewSource}}"
