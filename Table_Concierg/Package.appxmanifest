@@ -15,8 +15,8 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Table_Concierg.App">
-      <m2:VisualElements DisplayName="Table_Concierg" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Table_Concierg" ForegroundText="light" BackgroundColor="#464646">
-        <m2:DefaultTile ShortName="Table Concierge">
+      <m2:VisualElements DisplayName="Table_Concierg" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Table_Concierg" ForegroundText="light" BackgroundColor="wheat">
+        <m2:DefaultTile ShortName="Table Concierge" Square70x70Logo="Assets\Logos\Square 70\126X126.png">
         </m2:DefaultTile>
         <m2:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="wheat" />
         <m2:InitialRotationPreference>

@@ -29,6 +29,7 @@ namespace Table_Concierg
         private List<MenuIn> inMenuItem;
         private List<MenuIt> itMenuItem;
         private List<MenuLe> leMenuItem;
+        private List<Availability> timeOfAvailability;
 
         public OutletDetail()
         {
@@ -97,6 +98,22 @@ namespace Table_Concierg
             leMenuItem.Add(new MenuLe() { Image = "/Assets/MenuItems/Lebanese/13.jpg" });
             leMenuItemCollectionViewSource.Source = leMenuItem;
 
+            //Available Times
+            timeOfAvailability = new List<Availability>();
+            timeOfAvailability.Add(new Availability() { Time = "8:30" });
+            timeOfAvailability.Add(new Availability() { Time = "9:00" });
+            timeOfAvailability.Add(new Availability() { Time = "9:15" });
+            timeOfAvailability.Add(new Availability() { Time = "9:30" });
+            timeOfAvailability.Add(new Availability() { Time = "10:00" });
+            timeOfAvailability.Add(new Availability() { Time = "10:15" });
+            timeOfAvailability.Add(new Availability() { Time = "10:30" });
+            timeOfAvailability.Add(new Availability() { Time = "10:45" });
+            timeOfAvailability.Add(new Availability() { Time = "11:00" });
+            timeOfAvailability.Add(new Availability() { Time = "11:15" });
+            timeOfAvailability.Add(new Availability() { Time = "11:30" });
+            timeOfAvailability.Add(new Availability() { Time = "11:45" });
+            AvailabilityCollectionViewSource.Source = timeOfAvailability;
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -141,6 +158,11 @@ namespace Table_Concierg
             public string Image { get; set; }
         }
 
+        public class Availability
+        {
+            public string Time { get; set; }
+        }
+
         private void leMenuItemsGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(MenuItems));
@@ -152,17 +174,16 @@ namespace Table_Concierg
                 DetailHub.ScrollToSection(DetailHub.Sections[hubSection]);
         }
 
-        private void Slot1_Click(object sender, RoutedEventArgs e)
+        private void TextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Reservation));
+            char key = Convert.ToChar(e.Key);
+
+            //if the key is not 0-9 prevent the event from being handled further
+            if (!(key >= '0' && key <= '9'))
+                e.Handled = true; 
         }
 
-        private void Slot2_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Reservation));
-        }
-
-        private void Slot3_Click(object sender, RoutedEventArgs e)
+        private void Availability_Click(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(Reservation));
         }

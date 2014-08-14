@@ -26,18 +26,23 @@ namespace Table_Concierg
 
     public sealed partial class MainPage : Page 
     {
+        
 
-        private List<Item> item;
+        private List<Items> item;
         private List<ItemHeaders> header;
         private List<ItemCategories> category;
         private List<ItemAttire> attire;
         private List<ItemAmenities> amenity;
         private List<ItemRatings> rating;
 
+        private DateTimeOffset date;
+
         public MainPage()
         {
+            
             this.InitializeComponent();
             this.InitializeData();
+            
         }
 
         private void InitializeData()
@@ -87,8 +92,8 @@ namespace Table_Concierg
             itemRatingsCollectionViewSource.Source = rating;
 
 
-            item = new List<Item>();
-            item.Add(new Item() { Name = "Radisson", 
+            item = new List<Items>();
+            item.Add(new Items() { Name = "Radisson", 
                                   Location = "Dubai, Business Bay", 
                                   Phone = "+971 50 546 7876",
                                   Image = "/Assets/Outlets/Outlet_Chill.jpg",
@@ -99,7 +104,7 @@ namespace Table_Concierg
                                   RegularMode = true,
                                   Amenities = "/Assets/Icons/ic_action_person_Aquamarine.png" });
 
-            item.Add(new Item() { Name = "Holiday Inn",
+            item.Add(new Items() { Name = "Holiday Inn",
                                   Location = "Sharjah, Al Khan",
                                   Phone = "+971 50 234 5466",
                                   Image = "/Assets/Outlets/Outlet_Chill.jpg",
@@ -110,7 +115,7 @@ namespace Table_Concierg
                                   RegularMode = true,
                                   Amenities = "/Assets/Icons/ic_action_person_Aquamarine.png" });
 
-            item.Add(new Item() { Name = "Hilton",
+            item.Add(new Items() { Name = "Hilton",
                                   Location = "Dubai, Sheikh Zayed Road",
                                   Phone = "+971 50 546 7876",
                                   Image = "/Assets/Outlets/Outlet_Chill.jpg",
@@ -121,7 +126,7 @@ namespace Table_Concierg
                                   RegularMode = true,
                                   Amenities = "/Assets/Icons/ic_action_person_Aquamarine.png" });
 
-            item.Add(new Item() { Name = "Intercontinental",
+            item.Add(new Items() { Name = "Intercontinental",
                                   Location = "Dubai, Festival City",
                                   Phone = "+971 50 234 5466",
                                   Image = "/Assets/Outlets/Outlet_Chill.jpg",
@@ -132,7 +137,7 @@ namespace Table_Concierg
                                   RegularMode = true,
                                   Amenities = "/Assets/Icons/ic_action_person_Aquamarine.png" });
 
-            item.Add(new Item() { Name = "Hilton",
+            item.Add(new Items() { Name = "Hilton",
                                   Location = "Ajman",
                                   Phone = "+971 52 299 7866",
                                   Image = "/Assets/Outlets/Outlet_Chill.jpg",
@@ -143,7 +148,7 @@ namespace Table_Concierg
                                   RegularMode = true,
                                   Amenities = "/Assets/Icons/ic_action_person_Aquamarine.png" });
 
-            item.Add(new Item() { Name = "Holiday Inn",
+            item.Add(new Items() { Name = "Holiday Inn",
                                   Location = "Dubai, Bar Dubai",
                                   Phone = "+971 50 234 5466",
                                   Image = "/Assets/Outlets/Outlet_Chill.jpg",
@@ -154,7 +159,7 @@ namespace Table_Concierg
                                   RegularMode = true,
                                   Amenities = "/Assets/Icons/ic_action_person_Aquamarine.png" });
 
-            item.Add(new Item() { Name = "Holiday Inn",
+            item.Add(new Items() { Name = "Holiday Inn",
                                   Location = "Dubai, Bar Dubai",
                                   Phone = "+971 50 234 5466",
                                   Image = "/Assets/Outlets/Outlet_Chill.jpg",
@@ -198,7 +203,7 @@ namespace Table_Concierg
             this.Frame.Navigate(typeof(OutletDetail));
         }
 
-        public class Item
+        public class Items
         {
             public string Name { get; set; }
             public string Location { get; set; }
@@ -239,8 +244,8 @@ namespace Table_Concierg
 
         private void Availibility_Checked(object sender, RoutedEventArgs e)
         {
-            List<Item> items = itemCollectionViewSource.Source as List<Item>;
-            foreach (Item item in items)
+            List<Items> items = itemCollectionViewSource.Source as List<Items>;
+            foreach (Items item in items)
             {
                 item.RegularMode = false;
             }
@@ -248,8 +253,8 @@ namespace Table_Concierg
 
         private void Availibility_Unchecked(object sender, RoutedEventArgs e)
         {
-            List<Item> items = itemCollectionViewSource.Source as List<Item>;
-            foreach (Item item in items)
+            List<Items> items = itemCollectionViewSource.Source as List<Items>;
+            foreach (Items item in items)
             {
                 item.RegularMode = true;
             }
@@ -268,6 +273,30 @@ namespace Table_Concierg
         private void Slot3_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Reservation));
+        }
+
+        public DateTimeOffset Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+
+        private void TimeChanged_Picker(object sender, TimePickerValueChangedEventArgs e)
+        {
+            //TimeSpan dateTime = this.SearchTimePicker.Time;
+            //var sec = MainPageHub.Sections[0];
+            //var textBoxTime = sec.FindName("TimeTextBox") as TextBlock;
+            //textBoxTime.SetValue(TextBlock.TextProperty, dateTime.ToString());
+
+        }
+
+        private void Click_Breakfast(object sender, RoutedEventArgs e)
+        {
+            var sec = MainPageHub.Sections[0];
+            var MealType = sec.FindName("MealTypeTextBox") as TextBlock;
+
+            MenuFlyout mf = sender as MenuFlyout;
+            MealType.Text = "Breakfast";
         }
 
     }

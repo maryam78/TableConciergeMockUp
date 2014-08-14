@@ -118,7 +118,7 @@
                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
                                                 <DiscreteObjectKeyFrame KeyTime="0">
                                                     <DiscreteObjectKeyFrame.Value>
-                                                        <SolidColorBrush Color="Aquamarine"/>
+                                                        <SolidColorBrush Color="#a4b739"/>
                                                     </DiscreteObjectKeyFrame.Value>
                                                 </DiscreteObjectKeyFrame>
                                             </ObjectAnimationUsingKeyFrames>
@@ -269,7 +269,7 @@
 			<Setter Property="Foreground" Value="{ThemeResource TextBoxForegroundThemeBrush}"/>
 			<Setter Property="Background" Value="White"/>
 			<Setter Property="BorderBrush" Value="White"/>
-			<Setter Property="SelectionHighlightColor" Value="Aquamarine"/>
+            <Setter Property="SelectionHighlightColor" Value="#a4b739"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
 			<Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
@@ -435,9 +435,9 @@
 			</Setter>
 		</Style>
 
-        <SolidColorBrush x:Key="SliderTrackDecreaseBackgroundThemeBrush" Color="Aquamarine"/>
-        <SolidColorBrush x:Key="SliderTrackDecreasePointerOverBackgroundThemeBrush" Color="Aquamarine" />
-        <SolidColorBrush x:Key="SliderTrackDecreasePressedBackgroundThemeBrush" Color="Aquamarine" />
+        <SolidColorBrush x:Key="SliderTrackDecreaseBackgroundThemeBrush" Color="#a4b739"/>
+        <SolidColorBrush x:Key="SliderTrackDecreasePointerOverBackgroundThemeBrush" Color="#a4b739" />
+        <SolidColorBrush x:Key="SliderTrackDecreasePressedBackgroundThemeBrush" Color="#a4b739" />
 
         <SolidColorBrush x:Key="SliderThumbBackgroundThemeBrush" Color="Wheat" />
         <SolidColorBrush x:Key="SliderThumbBorderThemeBrush" Color="Wheat" />

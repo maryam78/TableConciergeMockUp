@@ -14,7 +14,31 @@
         <CollectionViewSource x:Name="itMenuItemCollectionViewSource"/>
         <CollectionViewSource x:Name="inMenuItemCollectionViewSource"/>
         <CollectionViewSource x:Name="leMenuItemCollectionViewSource"/>
+        <CollectionViewSource x:Name="AvailabilityCollectionViewSource"/>
         
+
+        <DataTemplate x:Key="Outlet_OutletDataTemplate">
+            <StackPanel Background="#f5efd0" Width="100" Height="40">
+                <TextBlock Text="{Binding Time}" Foreground="#a4b739" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <ItemsPanelTemplate x:Key="Outlet_GridPanelTemplate">
+            <ItemsWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3"/>
+        </ItemsPanelTemplate>
+
+        <Style x:Key="Outlet_OutletTileStyle" TargetType="GridViewItem">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0,0,8,8"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="TabNavigation" Value="Local"/>
+        </Style>
+
         <DataTemplate x:Key="OutletDetail_GalleryDataTemplate">
             <Border BorderBrush="White" BorderThickness="4">
                 <Grid Width="150" Height="150" HorizontalAlignment="Left">
@@ -56,6 +80,53 @@
         <ItemsPanelTemplate x:Key="OutletDetail_MenuGridPanelTemplate">
             <ItemsWrapGrid Orientation="Horizontal"/>
         </ItemsPanelTemplate>
+
+        <Flyout x:Key="Search_FlyoutCovers" Placement="Right">
+            <!-- The DataContext of the flyout is the same as the item's data context that the flyout is attached to. -->
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Height" Value="20"/>
+                    <Setter Property="Width" Value="160"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel>
+                <Slider x:Name="CoversSlider" Minimum="1" Maximum="10" Margin="0" VerticalAlignment="Bottom" IsEnabled="{Binding InputAllowed}" Width="150" Value="{Binding Path=Covers, Mode=TwoWay}"/>
+            </StackPanel>
+        </Flyout>
+        <Flyout x:Key="Search_FlyoutDate" Placement="Right">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="150"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel Margin="0,100,0,0">
+                <DatePicker x:Name="SearchDatePicker" Date="{Binding date, Mode=TwoWay}" Orientation="Vertical" Width="120"/>
+            </StackPanel>
+        </Flyout>
+        <Flyout x:Key="Search_FlyoutTime" Placement="Right">
+            <Flyout.FlyoutPresenterStyle>
+                <Style TargetType="FlyoutPresenter">
+                    <Setter Property="ScrollViewer.ZoomMode" Value="Enabled"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="150"/>
+                </Style>
+            </Flyout.FlyoutPresenterStyle>
+            <StackPanel>
+                <TimePicker x:Name="SearchTimePicker"  ClockIdentifier="24HourClock" MinuteIncrement="15" Width="170" Header="Hour               Minute"/>
+            </StackPanel>
+        </Flyout>
     </Page.Resources>
 
     <Hub x:Name="DetailHub">
@@ -63,7 +134,7 @@
             <SolidColorBrush Color="Wheat"/>
         </Hub.Background>
         
-        <Hub.Header>
+        <!--<Hub.Header>
             <StackPanel Orientation="Horizontal" Margin="0,-35,0,0">
                 <TextBlock Text="Book Now: " VerticalAlignment="Center" Margin="0,0,10,0" FontSize="30"/>
                 <Button Click="Slot1_Click" BorderThickness="0" Margin="0,0,2,0" Padding="0">
@@ -84,7 +155,7 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-        </Hub.Header>
+        </Hub.Header>-->
         
         <!-- Hero 1 -->
         <HubSection Width="1100">
@@ -119,11 +190,11 @@
                         <TextBlock Text="InterContinental - Dubai" Style="{StaticResource HeaderTextBlockStyle}" Margin="20,20,20,10" ></TextBlock>
                         <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
                             <TextBlock Text="Star Rating: " Foreground="White" Style="{StaticResource SubheaderTextBlockStyle}" Margin="0,0,0,15"/>
-                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="10,0,0,0" Width="20" Height="20"/>
-                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
-                            <Image Source="/Assets/Icons/ic_action_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
-                            <Image Source="/Assets/Icons/ic_action_half_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
-                            <Image Source="/Assets/Icons/ic_action_not_important_Aquamarine.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Green.png" Margin="10,0,0,0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Green.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_important_Green.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_half_important_Green.png" Margin="0" Width="20" Height="20"/>
+                            <Image Source="/Assets/Icons/ic_action_not_important_Green.png" Margin="0" Width="20" Height="20"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -180,12 +251,12 @@
                                 </Grid.RowDefinitions>
                                 
                                 <StackPanel Grid.Row="0" Orientation="Vertical" Margin="10,10,0,0">
-                                    <TextBlock Text="Address " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <TextBlock Text="Address " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="#a4b739"/>
                                     <TextBlock Text="UAE, Dubai Festival City" TextWrapping="Wrap"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10,10,0,0">
-                                    <TextBlock Text="Amenities " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <TextBlock Text="Amenities " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="#a4b739"/>
                                     <StackPanel x:Name="OverviewAmenities" Margin="0,0,0,0" Orientation="Horizontal">
                                         <Image Source="/Assets/Icons/ic_action_person.png" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20"/>
                                         <Image Source="/Assets/Icons/ic_action_favorite.png" VerticalAlignment="Center" HorizontalAlignment="Left" Width="20" Height="20"/>
@@ -196,7 +267,7 @@
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10,10,0,0">
-                                    <TextBlock Text="Phone " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <TextBlock Text="Phone " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="#a4b739"/>
                                     <TextBlock Text="+971 04 546 7833" TextWrapping="Wrap"/>
                                 </StackPanel>
                             </Grid>
@@ -210,7 +281,7 @@
                                 </Grid.RowDefinitions>
 
                                 <StackPanel Grid.Row="0" Orientation="Vertical" Margin="10,10,0,0">
-                                    <TextBlock Text="Rating " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <TextBlock Text="Rating " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="#a4b739"/>
                                     <StackPanel x:Name="OverviewRating" Orientation="Horizontal">
                                         <Image Source="/Assets/Icons/ic_action_important.png" Width="20" Height="20"/>
                                         <Image Source="/Assets/Icons/ic_action_important.png" Width="20" Height="20"/>
@@ -221,7 +292,7 @@
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10,10,0,0">
-                                    <TextBlock Text="Cuisine " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <TextBlock Text="Cuisine " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="#a4b739"/>
                                     <StackPanel x:Name="OverviewCuisine" Orientation="Horizontal">
                                         <Image Source="/Assets/Flags/India.png" Margin="0,0,5,0" Width="20" Height="20"/>
                                         <Image Source="/Assets/Flags/Italy.png" Margin="0,0,5,0" Width="20" Height="20"/>
@@ -230,7 +301,7 @@
                                 </StackPanel>
                                 
                                 <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10,10,0,0">
-                                    <TextBlock Text="Website " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="Aquamarine"/>
+                                    <TextBlock Text="Website " Margin="0,0,0,5" Style="{StaticResource TitleTextBlockStyle}" FontWeight="Medium" Foreground="#a4b739"/>
                                     <TextBlock Text="http://www.dubaifestivalcity.com" TextWrapping="Wrap"/>
                                 </StackPanel>
                             </Grid>
@@ -239,8 +310,107 @@
                 </Grid>
             </DataTemplate>
         </HubSection>
+
+        <!-- Availability 3 -->
+        <HubSection>
+            <DataTemplate>
+                <Grid Width="400" Height="500" Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Availability" Margin="10" Foreground="#683c0f" Style="{StaticResource SubheaderTextBlockStyle}"/>
+
+                    <Grid Grid.Row="1" Background="#683c0f">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Vertical">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <TextBox Grid.Column="0" Header="Date" PlaceholderText="{Binding date}" Foreground="#683c0f" Width="143" Height="70" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}" />
+                                    <StackPanel Grid.Column="1" Background="White" Height="42" VerticalAlignment="Bottom">
+                                        <Button Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,0,0" Padding="-3,0,0,0" VerticalAlignment="Bottom" Width="42" Height="42" BorderThickness="0" Style="{StaticResource ImageButton}" Flyout="{StaticResource Search_FlyoutDate}" >
+                                            <Image Source="/Assets/Icons/ic_action_go_to_today_Green.png" Margin="0,-3,0,0" Height="38" Width="38"/>
+                                        </Button>
+                                    </StackPanel>
+
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox  Grid.Column="0" Header="Meal Type" IsReadOnly="True" Width="143" Height="70" Margin="10,10,0,0" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}" KeyDown="TextBox_KeyDown"/>
+                                    <StackPanel Grid.Column="1" Background="White" Height="42" Width="42" VerticalAlignment="Bottom">
+                                        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="0" Padding="-3,0,0,0" VerticalAlignment="Center" Height="42" Width="42" BorderThickness="0" Style="{StaticResource ImageButton}">
+                                            <Button.Flyout>
+                                                <MenuFlyout>
+                                                    <MenuFlyoutItem Text="Breakfast"/>
+                                                    <MenuFlyoutItem Text="Lunch"/>
+                                                    <MenuFlyoutItem Text="Dinner"/>
+                                                </MenuFlyout>
+                                            </Button.Flyout>
+                                            <Image Source="/Assets/Icons/ic_action_time_Green.png" Margin="0,-3,0,0" Height="42" Width="42"/>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBox  Grid.Column="0" Header="Number of guests" Foreground="#683c0f" Width="143" Height="70" IsReadOnly="True" Text="{Binding Value,ElementName=CoversSlider}" Margin="10,10,0,0" HorizontalAlignment="Left" Style="{StaticResource TextBoxSearchStyle}"/>
+                                    <StackPanel Grid.Column="1" Background="White" Height="42" Width="42" VerticalAlignment="Bottom">
+                                        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="0" Padding="-3,0,0,0" VerticalAlignment="Center" Height="42"  Width="42" BorderThickness="0" Style="{StaticResource ImageButton}" Flyout="{StaticResource Search_FlyoutCovers}">
+                                            <Image Source="/Assets/Icons/ic_action_person_Green.png" Margin="0,-3,0,0" Width="42" Height="42"/>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Line Stroke="#a4b739" StrokeThickness="1" X1="-45" X2="55" HorizontalAlignment="Center" Margin="25,15,0,15"/>
+
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1" HorizontalAlignment="Center">                    
+                            <ScrollViewer Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                <GridView x:Name="AvailabilityGridView" 
+                                              Width="auto"
+                                              Grid.Row="1"
+                                              ItemTemplate="{StaticResource Outlet_OutletDataTemplate}" 
+                                              ItemContainerStyle="{StaticResource Outlet_OutletTileStyle}" 
+                                              ItemsPanel="{StaticResource Outlet_GridPanelTemplate}" 
+                                              ShowsScrollingPlaceholders="False" 
+                                              VerticalAlignment="Stretch" 
+                                              ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                              SelectionMode="None"
+                                              IsItemClickEnabled="True" 
+                                              ItemClick="Availability_Click"
+                                              ItemsSource="{Binding Source={StaticResource AvailabilityCollectionViewSource}}" 
+                                              Height="auto" 
+                                              Margin="0,0,5,0">
+                                </GridView>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </HubSection>
         
-        <!-- Photo Gallery 3 -->
+        <!-- Photo Gallery 4 -->
         <HubSection>
             <DataTemplate>
                 <Grid Width="800" Height="670" Margin="20,0,0,0">
@@ -273,7 +443,7 @@
             </DataTemplate>
         </HubSection>
 
-        <!-- Menu Items 4 -->
+        <!-- Menu Items 5 -->
         <HubSection IsHeaderInteractive="True">
             <DataTemplate>
                 <Grid Width="800" Height="670" Margin="20,0,0,0">
